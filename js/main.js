@@ -1,6 +1,9 @@
 import { Personage } from './Personage.js';
 import { Spell } from './Spell.js';
+import { Div_manager } from './Div_manager.js';
 
+let menu_div = new Div_manager("menu_div");
+let game_div = new Div_manager("game_div");
 
 let Jeanjean = new Personage("Jeanjean",100,10,150);
 let Michemuche = new Personage("Michemuche",120,15,300);
@@ -14,6 +17,10 @@ let btn7 = document.getElementById("btn7");
 let btn8 = document.getElementById("btn8");
 let btn9 = document.getElementById("btn9");
 let btn10 = document.getElementById("btn10");
+
+let btn_mage_selection = document.getElementById("Mage_selection");
+let btn_warrior_selection = document.getElementById("Warior_selection");
+let btn_tank_selection = document.getElementById("Tank_selection");
 
 let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
 let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
@@ -70,4 +77,27 @@ btn9.addEventListener("click", function(){
 
 btn10.addEventListener("click", function(){
     Michemuche.play_turn(2,Jeanjean);  
+}, false);
+
+
+
+btn_mage_selection.addEventListener("click", function(){
+    console.log("you choosed mage!");
+    // instatiate a mage
+    menu_div.hide();
+    game_div.show();
+}, false);
+
+btn_warrior_selection.addEventListener("click", function(){
+    console.log("you choosed warrior!");
+    // instatiate a warrior
+    menu_div.hide();
+    game_div.show();
+}, false);
+
+btn_tank_selection.addEventListener("click", function(){
+    console.log("you choosed tabk!");
+    // instatiate a tank
+    menu_div.hide();
+    game_div.show();
 }, false);
