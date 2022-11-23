@@ -17,6 +17,14 @@ let iceball = new Spell("iceball",50,10,() => console.log("*** iceball ***"));
 let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
 let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
+// ** instancier des ennemis
+let ennemis = [new Personage("Demon",100,10,150), new Personage("Monstre", 100, 10, 25), new Personage("Sorcier", 100, 10, 25)];
+console.log(ennemis);
+
+// ** choisir un ennemi aléatoirement dans la liste d'ennemis
+let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
+console.log(ennemi);
+
 btn_mage_selection.addEventListener("click", function(){
     console.log("you choosed mage!");
 
@@ -32,7 +40,7 @@ btn_mage_selection.addEventListener("click", function(){
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
     /**Print buttons */
-    personnage.printButtons();
+    personnage.printButtons(ennemi);
 }, false);
 
 btn_warrior_selection.addEventListener("click", function(){
@@ -58,14 +66,6 @@ btn_tank_selection.addEventListener("click", function(){
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
 }, false);
-
-// ** instancier des ennemis
-let ennemis = [new Personage("Demon",100,10,150), new Personage("Monstre", 100, 10, 25), new Personage("Sorcier", 100, 10, 25)];
-console.log(ennemis);
-
-// ** choisir un ennemi aléatoirement dans la liste d'ennemis
-let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
-console.log(ennemi);
 
 // ** créer élément HTML de l'ennemi
 let section_ennemi = document.getElementById("ennemi");

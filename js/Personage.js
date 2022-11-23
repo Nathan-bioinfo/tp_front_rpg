@@ -87,7 +87,7 @@ export class Personage
   /**
    * to do only for the player!
    */
-  printButtons() {
+  printButtons(ennemi) {
     let section_personnage = document.getElementById("personnage");    
 
     let spell_buttons_list = [];
@@ -102,6 +102,7 @@ export class Personage
       let name = spell_button.getName();
       btn.innerHTML=`<button id= "btn_${name}">Throw ${name}!</button>`;
       section_personnage.append(btn);
+      setButton(btn, spell_button.getSpell(), this, ennemi);
     }
   };
 
@@ -111,3 +112,13 @@ function change_value_by_name(name, value)
 {
   document.getElementById(name).innerHTML = value;
 }
+
+  /**
+   * adds the text to the button and the button to the document body
+   * adds an eventListener
+   */
+  function setButton(btn, spell, personnage, ennemi) {
+    btn.addEventListener("click", function(){
+        spell.cast(personnage, ennemi);
+    }, false);
+  }
