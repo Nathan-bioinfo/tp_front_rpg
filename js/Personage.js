@@ -1,3 +1,4 @@
+import { Button } from './Button.js';
 import { Spell } from './Spell.js';
 export class Personage
 {
@@ -89,6 +90,8 @@ export class Personage
   {
     console.log("Hello my name is " + this.name + ", i have " + this.hp + " hp, " + this.strength + " strength and " + this.stamina + " stamina")
   }
+
+
 }
 
 function change_value_by_name(name, value)
