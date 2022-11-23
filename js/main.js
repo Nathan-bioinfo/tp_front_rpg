@@ -5,8 +5,76 @@ import { Div_manager } from './Div_manager.js';
 let menu_div = new Div_manager("menu_div");
 let game_div = new Div_manager("game_div");
 
-let Jeanjean = new Personage("Jeanjean",100,10,150);
-let Michemuche = new Personage("Michemuche",120,15,300);
+let btn_mage_selection = document.getElementById("Mage_selection");
+let btn_warrior_selection = document.getElementById("Warior_selection");
+let btn_tank_selection = document.getElementById("Tank_selection");
+
+
+btn_mage_selection.addEventListener("click", function(){
+    console.log("you choosed mage!");
+
+    menu_div.hide();
+    game_div.show();
+    // ** instancier un mage pour le joueur
+    let personnage = new Personage("Mage",100,10,150);
+    // ** créer élément HTML du perso du joueur
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+btn_warrior_selection.addEventListener("click", function(){
+    console.log("you choosed warrior!");
+    // ** instancier un warrior pour le joueur
+    let personnage = new Personage("Warrior",100,10,150);
+    menu_div.hide();
+    game_div.show();
+    // ** créer élément HTML du perso du joueur
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+btn_tank_selection.addEventListener("click", function(){
+    console.log("you choosed tabk!");
+    // ** instancier un tank pour le joueur
+    let personnage = new Personage("Tank",100,10,150);
+    menu_div.hide();
+    game_div.show();
+    // ** créer élément HTML du perso du joueur
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+// ** instancier des ennemis
+let ennemis = [new Personage("Demon",100,10,150), new Personage("Monstre", 100, 10, 25), new Personage("Sorcier", 100, 10, 25)];
+console.log(ennemis);
+
+// ** choisir un ennemi aléatoirement dans la liste d'ennemis
+let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
+console.log(ennemi);
+
+// ** créer élément HTML de l'ennemi
+let section_ennemi = document.getElementById("ennemi");
+let div_ennemi = create_player_div(ennemi);
+section_ennemi.append(div_ennemi);
+
+function create_player_div(player) {
+    let div = document.createElement("div");
+    div.innerHTML=`<div id="${player.name}">
+                    <img src="img/warrior.png" alt="a warrior">
+                    <p id ="name_${player.name}">${player.name}</p>
+                    <p id ="hp_${player.name}">${player.hp}</p>
+                    <p id ="strength_${player.name}">${player.strength}</p>
+                    <p id ="stamina_${player.name}">${player.stamina}</p>
+                    </div>`;
+    return div;
+};
+
+// ** attaque aléatoire de l'ennemi
+// ennemi.play_turn((Math.floor(Math.random() * (((ennemi.attacks.length)-1) + 1))), personnage);
+
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
@@ -18,9 +86,7 @@ let btn8 = document.getElementById("btn8");
 let btn9 = document.getElementById("btn9");
 let btn10 = document.getElementById("btn10");
 
-let btn_mage_selection = document.getElementById("Mage_selection");
-let btn_warrior_selection = document.getElementById("Warior_selection");
-let btn_tank_selection = document.getElementById("Tank_selection");
+
 
 let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
 let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
@@ -31,73 +97,29 @@ let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
 let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
 
-Jeanjean.add_attack(fireball);
-Jeanjean.add_attack(firewall);
-Jeanjean.add_attack(firesword);
 
-Michemuche.add_attack(iceball);
-Michemuche.add_attack(icewall);
-Michemuche.add_attack(icesword);
 
-btn1.addEventListener("click", function(){
-    Jeanjean.hello();
-}, false);
+// btn1.addEventListener("click", function(){
+//     personnage.hello();
+// }, false);
 
-btn2.addEventListener("click", function(){
-    Jeanjean.give_dmg(Michemuche);
-}, false);
+// btn2.addEventListener("click", function(){
+//     personnage.give_dmg(ennemi);
+// }, false);
 
-btn3.addEventListener("click", function(){
-    Jeanjean.play_turn(0,Michemuche);  
-}, false);
+// btn3.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
-btn4.addEventListener("click", function(){
-    Jeanjean.play_turn(1,Michemuche);  
-}, false);
+// btn4.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
-btn5.addEventListener("click", function(){
-    Jeanjean.play_turn(2,Michemuche);  
-}, false);
-
-btn6.addEventListener("click", function(){
-    Michemuche.hello();
-}, false);
-
-btn7.addEventListener("click", function(){
-    Michemuche.give_dmg(Jeanjean);
-}, false);
-
-btn8.addEventListener("click", function(){
-    Michemuche.play_turn(0,Jeanjean);  
-}, false);
-
-btn9.addEventListener("click", function(){
-    Michemuche.play_turn(1,Jeanjean);  
-}, false);
-
-btn10.addEventListener("click", function(){
-    Michemuche.play_turn(2,Jeanjean);  
-}, false);
+// btn5.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
 
 
-btn_mage_selection.addEventListener("click", function(){
-    console.log("you choosed mage!");
-    // instatiate a mage
-    menu_div.hide();
-    game_div.show();
-}, false);
 
-btn_warrior_selection.addEventListener("click", function(){
-    console.log("you choosed warrior!");
-    // instatiate a warrior
-    menu_div.hide();
-    game_div.show();
-}, false);
 
-btn_tank_selection.addEventListener("click", function(){
-    console.log("you choosed tabk!");
-    // instatiate a tank
-    menu_div.hide();
-    game_div.show();
-}, false);
