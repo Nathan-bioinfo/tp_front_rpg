@@ -40,6 +40,8 @@ let personnage;
 btn_leave_game.addEventListener("click", function(){
     menu_div.show();
     game_div.hide();
+    //To avoid multiple players
+    location.reload();
 }, false);
 
 btn_mage_selection.addEventListener("click", function(){
