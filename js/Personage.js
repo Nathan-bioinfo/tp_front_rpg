@@ -1,3 +1,4 @@
+import { Spell } from './Spell.js';
 export class Personage
 {
   constructor(p_name,p_hp,p_strength,p_stamina)
@@ -9,10 +10,13 @@ export class Personage
     this.opponent = null;
     this.attacks = [];
 
-    change_value_by_name("name_"+ this.name, p_name);
-    change_value_by_name("strength_"+ this.name, p_strength);
-    change_value_by_name("hp_"+ this.name, p_hp);
-    change_value_by_name("stamina_"+ this.name, p_stamina);
+    // change_value_by_name("name_"+ this.name, p_name);
+    // change_value_by_name("strength_"+ this.name, p_strength);
+    // change_value_by_name("hp_"+ this.name, p_hp);
+    // change_value_by_name("stamina_"+ this.name, p_stamina);
+
+    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
+
   }
 
   play_turn(p_index,p_target)
