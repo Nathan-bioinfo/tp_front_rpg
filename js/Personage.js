@@ -10,14 +10,6 @@ export class Personage
     this.stamina = p_stamina;
     this.opponent = null;
     this.attacks = [];
-
-    // change_value_by_name("name_"+ this.name, p_name);
-    // change_value_by_name("strength_"+ this.name, p_strength);
-    // change_value_by_name("hp_"+ this.name, p_hp);
-    // change_value_by_name("stamina_"+ this.name, p_stamina);
-
-    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
-
   }
 
   play_turn(p_index,p_target)
@@ -91,13 +83,27 @@ export class Personage
     console.log("Hello my name is " + this.name + ", i have " + this.hp + " hp, " + this.strength + " strength and " + this.stamina + " stamina")
   }
 
-    /**
-   * create the buttons to cast spells. To do only for the player!
-   */
-     createButtons() {
-      this.attacks.forEach(spell => new Button("btn_${spell.getName()}", spell.getName(), this));
-    }
 
+  /**
+   * to do only for the player!
+   */
+  printButtons() {
+    let section_personnage = document.getElementById("personnage");    
+
+    let spell_buttons_list = [];
+
+    // ** Generates the spell buttons list
+    this.attacks.forEach(spell => spell_buttons_list.push(new SpellButton(spell, this)));
+
+    //** iterates */
+    for (let i = 0; i < spell_buttons_list.length; i++) {
+      let spell_button = spell_buttons_list[i];
+      let btn = document.createElement("button");
+      let name = spell_button.getName();
+      btn.innerHTML=`<button id= "btn_${name}">Throw ${name}!</button>`;
+      section_personnage.append(btn);
+    }
+  };
 
 }
 

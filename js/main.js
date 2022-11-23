@@ -9,6 +9,13 @@ let btn_mage_selection = document.getElementById("Mage_selection");
 let btn_warrior_selection = document.getElementById("Warior_selection");
 let btn_tank_selection = document.getElementById("Tank_selection");
 
+let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
+let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
+let firesword = new Spell("firesword",150,80, () => console.log("*** firesword ***"));
+
+let iceball = new Spell("iceball",50,10,() => console.log("*** iceball ***"));
+let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
+let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
 btn_mage_selection.addEventListener("click", function(){
     console.log("you choosed mage!");
@@ -17,10 +24,15 @@ btn_mage_selection.addEventListener("click", function(){
     game_div.show();
     // ** instancier un mage pour le joueur
     let personnage = new Personage("Mage",100,10,150);
+    //**Add attacks
+    personnage.add_attack(fireball);
+    personnage.add_attack(firewall);
     // ** créer élément HTML du perso du joueur
     let section_personnage = document.getElementById("personnage");
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
+    /**Print buttons */
+    personnage.printButtons();
 }, false);
 
 btn_warrior_selection.addEventListener("click", function(){
@@ -75,26 +87,7 @@ function create_player_div(player) {
 // ** attaque aléatoire de l'ennemi
 // ennemi.play_turn((Math.floor(Math.random() * (((ennemi.attacks.length)-1) + 1))), personnage);
 
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-let btn4 = document.getElementById("btn4");
-let btn5 = document.getElementById("btn5");
-let btn6 = document.getElementById("btn6");
-let btn7 = document.getElementById("btn7");
-let btn8 = document.getElementById("btn8");
-let btn9 = document.getElementById("btn9");
-let btn10 = document.getElementById("btn10");
 
-
-
-let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
-let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
-let firesword = new Spell("firesword",150,80, () => console.log("*** firesword ***"));
-
-let iceball = new Spell("iceball",50,10,() => console.log("*** iceball ***"));
-let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
-let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
 
 

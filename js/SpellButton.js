@@ -1,11 +1,13 @@
+import { Spell } from './Spell.js';
 
 export class SpellButton {
   constructor(p_spell, p_personnage)
   {
     this.spell = p_spell;
+    this.name = this.spell.getName();
     this.personnage = p_personnage;
     this.btn = document.createElement("button");
-    setButton();
+    this.setButton();
   }
 
   getPersonnage() {
@@ -16,20 +18,13 @@ export class SpellButton {
     return(this.name);
   }
 
-  getText() {
-    return(this.text);
-  }
-
   /**
    * adds the text to the button and the button to the document body
    * adds an eventListener
    */
   setButton() {
-    this.btn.innerHTML = this.text;
-    document.body.appendChild(this.btn);
-
     this.btn.addEventListener("click", function(){
-        this.spell.cast(p_personnage, ennemi);
+        this.spell.cast(this.p_personnage, ennemi);
     }, false);
   }
 
