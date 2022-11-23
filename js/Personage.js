@@ -1,22 +1,15 @@
 import { Spell } from './Spell.js';
-export class Personage
+
+export { Personage, Warrior, Mage, Tank, Demon, Monster, Wizard };
+class Personage
 {
-  constructor(p_name,p_hp,p_strength,p_stamina)
+  constructor()
   {
-    this.name = p_name;
-    this.hp = p_hp;
-    this.strength = p_strength;
-    this.stamina = p_stamina;
+    this.name = "Joueur";
+    this.hp = 100;
+    this.strength = 10;
+    this.stamina = 25;
     this.opponent = null;
-    this.attacks = [];
-
-    // change_value_by_name("name_"+ this.name, p_name);
-    // change_value_by_name("strength_"+ this.name, p_strength);
-    // change_value_by_name("hp_"+ this.name, p_hp);
-    // change_value_by_name("stamina_"+ this.name, p_stamina);
-
-    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
-
   }
 
   play_turn(p_index,p_target)
@@ -94,4 +87,65 @@ export class Personage
 function change_value_by_name(name, value)
 {
   document.getElementById(name).innerHTML = value;
+}
+
+
+class Mage extends Personage {
+  constructor()
+  {
+    super();
+    this.attacks = [];
+
+    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
+  }
+}
+
+class Warrior extends Personage {
+  constructor()
+  {
+    super();
+    this.attacks = [];
+
+    this.add_attack(new Spell("firesword",150,80, () => console.log("*** firesword ***")));
+  }
+}
+
+class Tank extends Personage {
+  constructor()
+  {
+    super();
+    this.attacks = [];
+
+    this.add_attack(new Spell("firewall",40,4,() => console.log("*** firewall ***")));
+  }
+}
+
+class Demon extends Personage {
+  constructor()
+  {
+    super("Demon");
+    this.attacks = [];
+
+    this.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
+  }
+}
+
+class Monster extends Personage {
+  constructor()
+  {
+    super("Monstre");
+    this.attacks = [];
+
+    this.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
+  }
+}
+
+class Wizard extends Personage {
+  constructor()
+  {
+    super("Sorcier");
+    this.attacks = [];
+
+    this.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
+  }
 }
