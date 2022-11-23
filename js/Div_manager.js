@@ -6,7 +6,7 @@ export class Div_manager
   }
   hide()
   {
-    this.div.style.visibility = "hidden";
+    this.div.style.display = "none";
   }
   show()
   {
