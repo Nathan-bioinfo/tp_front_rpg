@@ -1,6 +1,7 @@
 html{
     margin: 0;
     padding: 0;
+    box-sizing:border-box;
 }
 body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -16,40 +17,26 @@ body{
     height: 10vh;
     width: 10vw;
 }
+    
 .btn-group button:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
 }
+
 .btn-group button:hover {
     background-color: #3e8e41;
 }
-
-#main_div {
-/*     display: flex;
-    align-content: stretch;
-    width: 100vw;
-    height: 100vh; */
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-    background-color: blueviolet;
+#menu_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
 }
-#menu_div {
-/*     display: flex;
-    height:100vw;
-    width:100vh; */
-    height:100vh;
-    width:100%;
-    display:flex;
-    background-color: aqua;
-}
-#game_div {
-    visibility: hidden;
-/*     display: flex;
-    height:100vw;
-    width:100vh; */
-    height:100vh;
-    width:100%;
-    display:flex;
-    align-content: flex;
-    background-color: yellow;
+#game_div{
+    visibility:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
 }

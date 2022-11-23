@@ -1,12 +1,91 @@
-import { Personage } from './Personage.js';
+import { Personage, Warrior, Mage, Tank, Demon, Monster, Wizard  } from './Personage.js';
 import { Spell } from './Spell.js';
 import { Div_manager } from './Div_manager.js';
 
 let menu_div = new Div_manager("menu_div");
 let game_div = new Div_manager("game_div");
 
-let Jeanjean = new Personage("Jeanjean",100,10,150);
-let Michemuche = new Personage("Michemuche",120,15,300);
+let btn_mage_selection = document.getElementById("Mage_selection");
+let btn_warrior_selection = document.getElementById("Warior_selection");
+let btn_tank_selection = document.getElementById("Tank_selection");
+
+// ** instancier des ennemis
+let ennemis = [new Demon(), new Monster(), new Wizard()];
+
+// ** choisir un ennemi aléatoirement dans la liste d'ennemis
+let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
+
+// ** créer élément HTML de l'ennemi
+let section_ennemi = document.getElementById("ennemi");
+let div_ennemi = create_player_div(ennemi);
+section_ennemi.append(div_ennemi);
+
+// ** instancier des personnages
+let mage = new Mage();
+let warrior = new Warrior();
+let tank = new Tank();
+
+let personnage;
+
+
+btn_mage_selection.addEventListener("click", function(){
+    console.log("you choosed mage!");
+
+    menu_div.hide();
+    game_div.show();
+
+    make_perso(mage);
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+btn_warrior_selection.addEventListener("click", function(){
+    console.log("you choosed warrior!");
+    
+    menu_div.hide();
+    game_div.show();
+
+    make_perso(warrior);
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+btn_tank_selection.addEventListener("click", function(){
+    console.log("you choosed tabk!");
+    // ** instancier un tank pour le joueur
+    menu_div.hide();
+    game_div.show();
+
+    make_perso(tank);
+    let section_personnage = document.getElementById("personnage");
+    let div_personnage = create_player_div(personnage);
+    section_personnage.append(div_personnage);
+}, false);
+
+
+
+
+function create_player_div(player) {
+    let div = document.createElement("div");
+    div.innerHTML=`<div id="${player.name}">
+                    <img src="img/warrior.png" alt="a warrior">
+                    <p id ="name_${player.name}">${player.name}</p>
+                    <p id ="hp_${player.name}">${player.hp}</p>
+                    <p id ="strength_${player.name}">${player.strength}</p>
+                    <p id ="stamina_${player.name}">${player.stamina}</p>
+                    </div>`;
+    return div;
+};
+
+function make_perso(type) {
+    personnage = type;
+};
+
+// ** attaque aléatoire de l'ennemi
+// ennemi.play_turn((Math.floor(Math.random() * (((ennemi.attacks.length)-1) + 1))), personnage);
+
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let btn3 = document.getElementById("btn3");
@@ -18,86 +97,29 @@ let btn8 = document.getElementById("btn8");
 let btn9 = document.getElementById("btn9");
 let btn10 = document.getElementById("btn10");
 
-let btn_mage_selection = document.getElementById("Mage_selection");
-let btn_warrior_selection = document.getElementById("Warior_selection");
-let btn_tank_selection = document.getElementById("Tank_selection");
-
-let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
-let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
-let firesword = new Spell("firesword",150,80, () => console.log("*** firesword ***"));
-
-let iceball = new Spell("iceball",50,10,() => console.log("*** iceball ***"));
-let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
-let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
 
-Jeanjean.add_attack(fireball);
-Jeanjean.add_attack(firewall);
-Jeanjean.add_attack(firesword);
+// btn1.addEventListener("click", function(){
+//     personnage.hello();
+// }, false);
 
-Michemuche.add_attack(iceball);
-Michemuche.add_attack(icewall);
-Michemuche.add_attack(icesword);
+// btn2.addEventListener("click", function(){
+//     personnage.give_dmg(ennemi);
+// }, false);
 
-btn1.addEventListener("click", function(){
-    Jeanjean.hello();
-}, false);
+// btn3.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
-btn2.addEventListener("click", function(){
-    Jeanjean.give_dmg(Michemuche);
-}, false);
+// btn4.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
-btn3.addEventListener("click", function(){
-    Jeanjean.play_turn(0,Michemuche);  
-}, false);
-
-btn4.addEventListener("click", function(){
-    Jeanjean.play_turn(1,Michemuche);  
-}, false);
-
-btn5.addEventListener("click", function(){
-    Jeanjean.play_turn(2,Michemuche);  
-}, false);
-
-btn6.addEventListener("click", function(){
-    Michemuche.hello();
-}, false);
-
-btn7.addEventListener("click", function(){
-    Michemuche.give_dmg(Jeanjean);
-}, false);
-
-btn8.addEventListener("click", function(){
-    Michemuche.play_turn(0,Jeanjean);  
-}, false);
-
-btn9.addEventListener("click", function(){
-    Michemuche.play_turn(1,Jeanjean);  
-}, false);
-
-btn10.addEventListener("click", function(){
-    Michemuche.play_turn(2,Jeanjean);  
-}, false);
+// btn5.addEventListener("click", function(){
+//     personnage.play_turn(0,ennemi);  
+// }, false);
 
 
 
-btn_mage_selection.addEventListener("click", function(){
-    console.log("you choosed mage!");
-    // instatiate a mage
-    menu_div.hide();
-    game_div.show();
-}, false);
 
-btn_warrior_selection.addEventListener("click", function(){
-    console.log("you choosed warrior!");
-    // instatiate a warrior
-    menu_div.hide();
-    game_div.show();
-}, false);
 
-btn_tank_selection.addEventListener("click", function(){
-    console.log("you choosed tabk!");
-    // instatiate a tank
-    menu_div.hide();
-    game_div.show();
-}, false);
