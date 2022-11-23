@@ -1,11 +1,9 @@
 
-export class Button {
-  constructor(p_name,p_text, p_personnage, p_attack_index)
+export class SpellButton {
+  constructor(p_spell, p_personnage)
   {
-    this.name = p_name;
-    this.text = p_text;
+    this.spell = p_spell;
     this.personnage = p_personnage;
-    this.attack_index = p_attack_index;
     this.btn = document.createElement("button");
     setButton();
   }
@@ -31,7 +29,7 @@ export class Button {
     document.body.appendChild(this.btn);
 
     this.btn.addEventListener("click", function(){
-        this.personnage.getAttacks()[this.attack_index];
+        this.spell.cast(p_personnage, ennemi);
     }, false);
   }
 

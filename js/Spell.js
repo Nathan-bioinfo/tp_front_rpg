@@ -8,6 +8,9 @@ export class Spell
     this.callback = p_callback;
   }
 
+  getName() {
+    return(this.name);
+  }
 
   cast(p_caster, p_target)
   {

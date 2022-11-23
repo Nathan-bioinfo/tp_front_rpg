@@ -1,4 +1,4 @@
-import { Button } from './Button.js';
+import { SpellButton } from './SpellButton.js';
 import { Spell } from './Spell.js';
 export class Personage
 {
@@ -90,6 +90,13 @@ export class Personage
   {
     console.log("Hello my name is " + this.name + ", i have " + this.hp + " hp, " + this.strength + " strength and " + this.stamina + " stamina")
   }
+
+    /**
+   * create the buttons to cast spells. To do only for the player!
+   */
+     createButtons() {
+      this.attacks.forEach(spell => new Button("btn_${spell.getName()}", spell.getName(), this));
+    }
 
 
 }
