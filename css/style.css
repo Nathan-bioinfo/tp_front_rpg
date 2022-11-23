@@ -4,27 +4,13 @@ html{
     box-sizing:border-box;
 }
 body{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    background-image: url('../img/fond.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
-.btn-group button {
-    background-color: #04AA6D; 
-    border: 1px solid green; 
-    color: white; 
-    padding: 10px 24px;
-    margin: 20px;
-    cursor: pointer;
-    display: block;
-    height: 10vh;
-    width: 10vw;
-}
-    
-.btn-group button:not(:last-child) {
-    border-bottom: none; /* Prevent double borders */
-}
-
-.btn-group button:hover {
-    background-color: #3e8e41;
-}
+ 
 #menu_div{
     display: flex;
     justify-content: center;
@@ -40,3 +26,44 @@ body{
     width: 100%;
     height: 50vh;
 }
+
+#Mage_selection {
+    height: 100px;
+    margin: 2em;
+}
+#Warior_selection {
+    height: 100px;
+    margin: 2em;
+}
+#Tank_selection {
+    height: 100px;
+    margin: 2em;
+}
+#Astronaut_selection {
+    height: 100px;
+    margin: 2em;
+}
+#Monstre_selection {
+    height: 100px;
+    margin: 2em;
+}
+#Girl_selection {
+    height: 100px;
+    margin: 2em;
+}
+
+
+.perso{
+    margin-left: 15em;
+}
+
+.h1 {
+    font-family: 'Press Start 2P', cursive;
+    background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(255, 238, 0), rgb(255, 0, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5em;
+    margin-left: 2.5em;
+    margin-top: 3em;
+}
+

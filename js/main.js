@@ -70,7 +70,7 @@ btn_tank_selection.addEventListener("click", function(){
 function create_player_div(player) {
     let div = document.createElement("div");
     div.innerHTML=`<div id="${player.name}">
-                    <img src="img/warrior.png" alt="a warrior">
+                    <img src="img/mage.png" height="110px">
                     <p id ="name_${player.name}">${player.name}</p>
                     <p id ="hp_${player.name}">${player.hp}</p>
                     <p id ="strength_${player.name}">${player.strength}</p>
