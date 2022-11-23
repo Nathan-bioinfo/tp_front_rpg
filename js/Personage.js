@@ -123,7 +123,8 @@ class Tank extends Personage {
 class Demon extends Personage {
   constructor()
   {
-    super("Demon");
+    super();
+    this.name = "Demon";
     this.attacks = [];
 
     this.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
@@ -133,7 +134,8 @@ class Demon extends Personage {
 class Monster extends Personage {
   constructor()
   {
-    super("Monstre");
+    super();
+    this.name = "Monstre";
     this.attacks = [];
 
     this.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
@@ -143,7 +145,8 @@ class Monster extends Personage {
 class Wizard extends Personage {
   constructor()
   {
-    super("Sorcier");
+    super();
+    this.name = "Sorcier";
     this.attacks = [];
 
     this.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
