@@ -1,3 +1,4 @@
+import { SpellButton } from './SpellButton.js';
 import { Spell } from './Spell.js';
 
 export { Personage, Warrior, Mage, Tank, Demon, Monster, Wizard };
@@ -10,6 +11,8 @@ class Personage
     this.strength = 10;
     this.stamina = 25;
     this.opponent = null;
+    this.attacks = [];
+
   }
 
   play_turn(p_index,p_target)
@@ -82,6 +85,30 @@ class Personage
   {
     console.log("Hello my name is " + this.name + ", i have " + this.hp + " hp, " + this.strength + " strength and " + this.stamina + " stamina")
   }
+
+
+  /**
+   * to do only for the player!
+   */
+  printButtons(ennemi) {
+    let section_personnage = document.getElementById("personnage");    
+
+    let spell_buttons_list = [];
+
+    // ** Generates the spell buttons list
+    this.attacks.forEach(spell => spell_buttons_list.push(new SpellButton(spell, this)));
+
+    //** iterates */
+    for (let i = 0; i < spell_buttons_list.length; i++) {
+      let spell_button = spell_buttons_list[i];
+      let btn = document.createElement("button");
+      let name = spell_button.getName();
+      btn.innerHTML=`<button id= "btn_${name}">Throw ${name}!</button>`;
+      section_personnage.append(btn);
+      setButton(btn, spell_button.getSpell(), this, ennemi);
+    }
+  };
+
 }
 
 function change_value_by_name(name, value)
@@ -89,14 +116,21 @@ function change_value_by_name(name, value)
   document.getElementById(name).innerHTML = value;
 }
 
+  /**
+   * adds the text to the button and the button to the document body
+   * adds an eventListener
+   */
+  function setButton(btn, spell, personnage, ennemi) {
+    btn.addEventListener("click", function(){
+        spell.cast(personnage, ennemi);
+    }, false);
+  }
 
 class Mage extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
+    super.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
   }
 }
 
@@ -104,9 +138,7 @@ class Warrior extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("firesword",150,80, () => console.log("*** firesword ***")));
+    super.add_attack(new Spell("firesword",150,80, () => console.log("*** firesword ***")));
   }
 }
 
@@ -114,9 +146,7 @@ class Tank extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("firewall",40,4,() => console.log("*** firewall ***")));
+    super.add_attack(new Spell("firewall",40,4,() => console.log("*** firewall ***")));
   }
 }
 
@@ -125,9 +155,7 @@ class Demon extends Personage {
   {
     super();
     this.name = "Demon";
-    this.attacks = [];
-
-    this.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
+    super.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
   }
 }
 
@@ -136,9 +164,7 @@ class Monster extends Personage {
   {
     super();
     this.name = "Monstre";
-    this.attacks = [];
-
-    this.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
+    super.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
   }
 }
 
@@ -147,8 +173,6 @@ class Wizard extends Personage {
   {
     super();
     this.name = "Sorcier";
-    this.attacks = [];
-
-    this.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
+    super.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
   }
 }

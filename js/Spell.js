@@ -8,6 +8,10 @@ export class Spell
     this.callback = p_callback;
   }
 
+  getName() {
+    return(this.name);
+  }
+
   cast(p_caster, p_target)
   {
     let stamina = p_caster.get_stamina();

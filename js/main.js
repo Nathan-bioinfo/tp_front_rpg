@@ -5,17 +5,25 @@ import { Div_manager } from './Div_manager.js';
 let menu_div = new Div_manager("menu_div");
 let game_div = new Div_manager("game_div");
 
+let btn_leave_game = document.getElementById("leave_game");
 let btn_mage_selection = document.getElementById("Mage_selection");
 let btn_warrior_selection = document.getElementById("Warior_selection");
 let btn_tank_selection = document.getElementById("Tank_selection");
 
+let fireball = new Spell("fireball",50,10,() => console.log("*** fireball ***"));
+let firewall = new Spell("firewall",40,4,() => console.log("*** firewall ***"));
+let firesword = new Spell("firesword",150,80, () => console.log("*** firesword ***"));
 
-let btn_leave_game = document.getElementById("leave_game");
+let iceball = new Spell("iceball",50,10,() => console.log("*** iceball ***"));
+let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
+let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
+
 // ** instancier des ennemis
 let ennemis = [new Demon(), new Monster(), new Wizard()];
 
 // ** choisir un ennemi aléatoirement dans la liste d'ennemis
 let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
+console.log(ennemi);
 
 // ** créer élément HTML de l'ennemi
 let section_ennemi = document.getElementById("ennemi");
@@ -32,10 +40,12 @@ let personnage;
 btn_leave_game.addEventListener("click", function(){
     menu_div.show();
     game_div.hide();
+    //To avoid multiple players
+    location.reload();
 }, false);
 
 btn_mage_selection.addEventListener("click", function(){
-    console.log("you choosed mage!");
+    console.log("you chose mage!");
 
     menu_div.hide();
     game_div.show();
@@ -44,10 +54,12 @@ btn_mage_selection.addEventListener("click", function(){
     let section_personnage = document.getElementById("personnage");
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
+    /**Print spell buttons */
+    personnage.printButtons(ennemi);
 }, false);
 
 btn_warrior_selection.addEventListener("click", function(){
-    console.log("you choosed warrior!");
+    console.log("you chose warrior!");
     
     menu_div.hide();
     game_div.show();
@@ -56,10 +68,12 @@ btn_warrior_selection.addEventListener("click", function(){
     let section_personnage = document.getElementById("personnage");
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
+    /**Print spell buttons */
+    personnage.printButtons(ennemi);
 }, false);
 
 btn_tank_selection.addEventListener("click", function(){
-    console.log("you choosed tabk!");
+    console.log("you chose tank!");
     // ** instancier un tank pour le joueur
     menu_div.hide();
     game_div.show();
@@ -68,10 +82,9 @@ btn_tank_selection.addEventListener("click", function(){
     let section_personnage = document.getElementById("personnage");
     let div_personnage = create_player_div(personnage);
     section_personnage.append(div_personnage);
+    /**Print spell buttons */
+    personnage.printButtons(ennemi);
 }, false);
-
-
-
 
 function create_player_div(player) {
     let div = document.createElement("div");
@@ -91,19 +104,6 @@ function make_perso(type) {
 
 // ** attaque aléatoire de l'ennemi
 // ennemi.play_turn((Math.floor(Math.random() * (((ennemi.attacks.length)-1) + 1))), personnage);
-
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-let btn4 = document.getElementById("btn4");
-let btn5 = document.getElementById("btn5");
-let btn6 = document.getElementById("btn6");
-let btn7 = document.getElementById("btn7");
-let btn8 = document.getElementById("btn8");
-let btn9 = document.getElementById("btn9");
-let btn10 = document.getElementById("btn10");
-
-
 
 // btn1.addEventListener("click", function(){
 //     personnage.hello();
