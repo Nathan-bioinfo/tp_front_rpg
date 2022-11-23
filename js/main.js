@@ -5,6 +5,7 @@ import { Div_manager } from './Div_manager.js';
 let menu_div = new Div_manager("menu_div");
 let game_div = new Div_manager("game_div");
 
+let btn_leave_game = document.getElementById("leave_game");
 let btn_mage_selection = document.getElementById("Mage_selection");
 let btn_warrior_selection = document.getElementById("Warior_selection");
 let btn_tank_selection = document.getElementById("Tank_selection");
@@ -18,8 +19,7 @@ let icewall = new Spell("icewall",40,4,() => console.log("*** icewall ***"));
 let icesword = new Spell("icesword",150,80,() => console.log("*** icesword ***"));
 
 // ** instancier des ennemis
-let ennemis = [new Personage("Demon",100,10,150), new Personage("Monstre", 100, 10, 25), new Personage("Sorcier", 100, 10, 25)];
-console.log(ennemis);
+let ennemis = [new Demon(), new Monster(), new Wizard()];
 
 // ** choisir un ennemi aléatoirement dans la liste d'ennemis
 let ennemi = ennemis[(Math.floor(Math.random() * (((ennemis.length)-1) + 1)))];
@@ -43,11 +43,11 @@ btn_leave_game.addEventListener("click", function(){
 }, false);
 
 btn_mage_selection.addEventListener("click", function(){
-    console.log("you choosed mage!");
+    console.log("you chose mage!");
 
     menu_div.hide();
     game_div.show();
-    
+
     make_perso(mage);
     let section_personnage = document.getElementById("personnage");
     let div_personnage = create_player_div(personnage);
@@ -57,7 +57,7 @@ btn_mage_selection.addEventListener("click", function(){
 }, false);
 
 btn_warrior_selection.addEventListener("click", function(){
-    console.log("you choosed warrior!");
+    console.log("you chose warrior!");
     
     menu_div.hide();
     game_div.show();
@@ -71,7 +71,7 @@ btn_warrior_selection.addEventListener("click", function(){
 }, false);
 
 btn_tank_selection.addEventListener("click", function(){
-    console.log("you choosed tabk!");
+    console.log("you chose tank!");
     // ** instancier un tank pour le joueur
     menu_div.hide();
     game_div.show();

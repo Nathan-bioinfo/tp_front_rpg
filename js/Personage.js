@@ -130,9 +130,7 @@ class Mage extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
+    super.add_attack(new Spell("fireball",50,10,() => console.log("*** fireball ***")));
   }
 }
 
@@ -140,9 +138,7 @@ class Warrior extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("firesword",150,80, () => console.log("*** firesword ***")));
+    super.add_attack(new Spell("firesword",150,80, () => console.log("*** firesword ***")));
   }
 }
 
@@ -150,9 +146,7 @@ class Tank extends Personage {
   constructor()
   {
     super();
-    this.attacks = [];
-
-    this.add_attack(new Spell("firewall",40,4,() => console.log("*** firewall ***")));
+    super.add_attack(new Spell("firewall",40,4,() => console.log("*** firewall ***")));
   }
 }
 
@@ -161,9 +155,7 @@ class Demon extends Personage {
   {
     super();
     this.name = "Demon";
-    this.attacks = [];
-
-    this.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
+    super.add_attack(new Spell("icesword",150,80,() => console.log("*** icesword ***")));
   }
 }
 
@@ -172,9 +164,7 @@ class Monster extends Personage {
   {
     super();
     this.name = "Monstre";
-    this.attacks = [];
-
-    this.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
+    super.add_attack(new Spell("icewall",40,4,() => console.log("*** icewall ***")));
   }
 }
 
@@ -183,8 +173,6 @@ class Wizard extends Personage {
   {
     super();
     this.name = "Sorcier";
-    this.attacks = [];
-
-    this.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
+    super.add_attack(new Spell("iceball",50,10,() => console.log("*** iceball ***")));
   }
 }
