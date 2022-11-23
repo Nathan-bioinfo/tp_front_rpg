@@ -14,3 +14,4 @@
 * animation sort / attaque / dégats
 * barre de vie 
 * types d'ennemis différents 
+* 
