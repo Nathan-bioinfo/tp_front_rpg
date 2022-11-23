@@ -9,8 +9,8 @@ let btn_mage_selection = document.getElementById("Mage_selection");
 let btn_warrior_selection = document.getElementById("Warior_selection");
 let btn_tank_selection = document.getElementById("Tank_selection");
 
-let btn_leave_game = document.getElementById("leave_game");
 
+let btn_leave_game = document.getElementById("leave_game");
 // ** instancier des ennemis
 let ennemis = [new Demon(), new Monster(), new Wizard()];
 
@@ -124,9 +124,3 @@ let btn10 = document.getElementById("btn10");
 // btn5.addEventListener("click", function(){
 //     personnage.play_turn(0,ennemi);  
 // }, false);
-
-
-
-
-
-
